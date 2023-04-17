@@ -38,10 +38,19 @@ def selection_sort(seznam, direction="vzestupne"):
     return seznam
 
 
+def bubble_sort(seznam):
+    for i in range(len(seznam) - 1):
+        for idx in range(len(seznam) - i - 1):
+            if seznam[idx] > seznam[idx + 1]:
+                seznam[idx], seznam[idx + 1] = seznam[idx + 1], seznam[idx]
+    return seznam
+
+
 def main():
     data = read_data("numbers.csv")
     print(data)
-    print(selection_sort(data["series_2"]))
+    print(selection_sort(data["series_1"]))
+    print(bubble_sort(data["series_2"]))
 
 
 if __name__ == '__main__':
