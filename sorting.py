@@ -23,9 +23,25 @@ def read_data(file_name):
     return slovnik
 
 
+def selection_sort(seznam, direction="vzestupne"):
+    for i in range(len(seznam)):
+        idx_extrem = i
+        for j in range(i + 1, len(seznam)):
+            idx_cislo = j
+            if direction == "vzestupne":
+                if seznam[idx_extrem] > seznam[idx_cislo]:
+                    idx_extrem = idx_cislo
+            elif direction == "sestupne":
+                if seznam[idx_extrem] < seznam[idx_cislo]:
+                    idx_extrem = idx_cislo
+        seznam[i], seznam[idx_extrem] = seznam[idx_extrem], seznam[i]
+    return seznam
+
+
 def main():
     data = read_data("numbers.csv")
     print(data)
+    print(selection_sort(data["series_2"]))
 
 
 if __name__ == '__main__':
