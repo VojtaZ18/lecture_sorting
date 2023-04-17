@@ -46,12 +46,24 @@ def bubble_sort(seznam):
     return seznam
 
 
+def insertion_sort(seznam):
+    for i in range(1, len(seznam)):
+        klic = seznam[i]
+        j = i - 1
+        while j >= 0 and klic < seznam[j]:
+            seznam[j + 1] = seznam[j]
+            j -= 1
+        seznam[j + 1] = klic
+    return seznam
+
 
 def main():
     data = read_data("numbers.csv")
     print(data)
-    print(selection_sort(data["series_1"]))
+    print(selection_sort(data["series_2"]))
     print(bubble_sort(data["series_2"]))
+    seznam = insertion_sort(data["series_1"])
+    print(seznam)
 
 
 if __name__ == '__main__':
