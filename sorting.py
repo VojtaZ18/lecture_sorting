@@ -46,6 +46,7 @@ def bubble_sort(seznam):
     return seznam
 
 
+
 def main():
     data = read_data("numbers.csv")
     print(data)
