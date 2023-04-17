@@ -1,4 +1,5 @@
 import os
+import csv
 
 
 def read_data(file_name):
@@ -10,10 +11,21 @@ def read_data(file_name):
     """
     cwd_path = os.getcwd()
     file_path = os.path.join(cwd_path, file_name)
+    with open(file_path, "r") as soubor:
+        data = csv.DictReader(soubor)
+        slovnik = {}
+        for row in data:
+            for hlavicka, hodnota in row.items():
+                if hlavicka not in slovnik:
+                    slovnik[hlavicka] = [int(hodnota)]
+                else:
+                    slovnik[hlavicka].append(int(hodnota))
+    return slovnik
 
 
 def main():
-    pass
+    data = read_data("numbers.csv")
+    print(data)
 
 
 if __name__ == '__main__':
